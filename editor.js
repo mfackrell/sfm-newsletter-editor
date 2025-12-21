@@ -29,26 +29,28 @@ if (!fileId) {
     });
 }
 
-saveBtn.addEventListener("click", async () => {
-  const updatedHtml =
-    preview.contentDocument.documentElement.outerHTML;
-
-  const formData = new FormData();
-  formData.append("fileId", fileId);
-  formData.append("html", updatedHtml);
-
+saveBtn.addEventListener("click", () => {
   try {
-    await fetch(
-      "https://hooks.zapier.com/hooks/catch/19867794/uaz4fae/",
-      {
-        method: "POST",
-        body: formData,
-        mode: "no-cors"
-      }
-    );
+    const doc = preview.contentDocument;
 
-    // If we got here, Zapier received it
-    alert("Newsletter saved successfully.");
+    if (!doc || !doc.documentElement) {
+      throw new Error("Preview document not ready");
+    }
+
+    const updatedHtml = doc.documentElement.outerHTML;
+
+    const body = new URLSearchParams();
+    body.append("fileId", fileId);
+    body.append("html", updatedHtml);
+
+    // Fire-and-forget — no preflight, no CORS error
+    fetch("https://hooks.zapier.com/hooks/catch/19867794/uaz4fae/", {
+      method: "POST",
+      body: body
+    });
+
+    alert("Newsletter submitted successfully.");
+
   } catch (err) {
     console.error(err);
     alert("Error saving newsletter.");
