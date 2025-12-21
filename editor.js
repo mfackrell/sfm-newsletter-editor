@@ -1,12 +1,29 @@
 const editor = document.getElementById("editor");
 const saveBtn = document.getElementById("saveBtn");
 
-// Load HTML from query param (?html=...)
+// Read fileId from URL (?fileId=...)
 const params = new URLSearchParams(window.location.search);
-const html = params.get("html");
+const fileId = params.get("fileId");
 
-if (html) {
-  editor.value = decodeURIComponent(html);
+if (!fileId) {
+  editor.value = "No fileId provided in URL.";
+} else {
+  const githubRawUrl = `https://raw.githubusercontent.com/mfackrell/sfm-newsletter-editor/main/${fileId}.html`;
+
+  fetch(githubRawUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Failed to load HTML from GitHub");
+      }
+      return response.text();
+    })
+    .then(html => {
+      editor.value = html;
+    })
+    .catch(error => {
+      console.error(error);
+      editor.value = "Error loading newsletter HTML.";
+    });
 }
 
 // TEMP: log instead of sending
