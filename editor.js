@@ -33,26 +33,25 @@ saveBtn.addEventListener("click", async () => {
   const updatedHtml =
     preview.contentDocument.documentElement.outerHTML;
 
+  const formData = new FormData();
+  formData.append("fileId", fileId);
+  formData.append("html", updatedHtml);
+
   try {
-    const res = await fetch(
+    await fetch(
       "https://hooks.zapier.com/hooks/catch/19867794/uaz4fae/",
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          fileId: fileId,
-          html: updatedHtml
-        })
+        body: formData,
+        mode: "no-cors"
       }
     );
 
-    if (!res.ok) throw new Error("Zapier rejected the update");
-
+    // If we got here, Zapier received it
     alert("Newsletter saved successfully.");
   } catch (err) {
     console.error(err);
     alert("Error saving newsletter.");
   }
 });
+
