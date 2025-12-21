@@ -19,29 +19,8 @@ if (!fileId) {
 
       preview.onload = () => {
         const doc = preview.contentDocument;
-
-        // Make ONLY text elements editable
-        const editableSelectors = [
-          "p",
-          "h1",
-          "h2",
-          "h3",
-          "h4",
-          "h5",
-          "h6",
-          "li",
-          "span",
-          "strong",
-          "em",
-          "a"
-        ];
-
-        editableSelectors.forEach(selector => {
-          doc.querySelectorAll(selector).forEach(el => {
-            el.setAttribute("contenteditable", "true");
-            el.style.cursor = "text";
-          });
-        });
+        doc.body.contentEditable = true;
+        doc.body.style.cursor = "text";
       };
     })
     .catch(err => {
@@ -50,12 +29,30 @@ if (!fileId) {
     });
 }
 
-saveBtn.addEventListener("click", () => {
+saveBtn.addEventListener("click", async () => {
   const updatedHtml =
     preview.contentDocument.documentElement.outerHTML;
 
-  console.log("UPDATED HTML:");
-  console.log(updatedHtml);
+  try {
+    const res = await fetch(
+      "https://hooks.zapier.com/hooks/catch/19867794/uaz4fae/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          fileId: fileId,
+          html: updatedHtml
+        })
+      }
+    );
 
-  alert("Saved (console only for now)");
+    if (!res.ok) throw new Error("Zapier rejected the update");
+
+    alert("Newsletter saved successfully.");
+  } catch (err) {
+    console.error(err);
+    alert("Error saving newsletter.");
+  }
 });
