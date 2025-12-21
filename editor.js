@@ -15,14 +15,33 @@ if (!fileId) {
       return res.text();
     })
     .then(html => {
-      // Load HTML into iframe
       preview.srcdoc = html;
 
-      // Wait for iframe to render
       preview.onload = () => {
         const doc = preview.contentDocument;
-        doc.body.contentEditable = true;
-        doc.body.style.cursor = "text";
+
+        // Make ONLY text elements editable
+        const editableSelectors = [
+          "p",
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+          "li",
+          "span",
+          "strong",
+          "em",
+          "a"
+        ];
+
+        editableSelectors.forEach(selector => {
+          doc.querySelectorAll(selector).forEach(el => {
+            el.setAttribute("contenteditable", "true");
+            el.style.cursor = "text";
+          });
+        });
       };
     })
     .catch(err => {
