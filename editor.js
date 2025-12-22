@@ -37,7 +37,11 @@ saveBtn.addEventListener("click", () => {
       throw new Error("Preview document not ready");
     }
 
-    const updatedHtml = doc.documentElement.outerHTML;
+    let updatedHtml = doc.documentElement.outerHTML;
+
+    if (!updatedHtml.toLowerCase().startsWith("<!doctype")) {
+      updatedHtml = "<!DOCTYPE html>\n" + updatedHtml;
+    }
 
     const body = new URLSearchParams();
     body.append("fileId", fileId);
