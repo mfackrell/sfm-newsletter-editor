@@ -4,6 +4,29 @@ const saveBtn = document.getElementById("saveBtn");
 const params = new URLSearchParams(window.location.search);
 const fileId = params.get("fileId");
 
+function sanitizeEmailHtmlForBrowser(html) {
+  // Fix markdown-style href="[url](url)"
+  html = html.replace(
+    /href="\[(https?:\/\/[^\]]+)\]\([^)]+\)"/g,
+    'href="$1"'
+  );
+
+  // Remove empty-src images
+  html = html.replace(
+    /<img\b[^>]*\bsrc\s*=\s*["']\s*["'][^>]*>/gi,
+    ''
+  );
+
+  // Remove cid images (browser can't render them)
+  html = html.replace(
+    /<img\b[^>]*\bsrc\s*=\s*["']cid:[^"']*["'][^>]*>/gi,
+    ''
+  );
+
+  return html;
+}
+
+
 if (!fileId) {
   alert("No fileId provided.");
 } else {
@@ -15,6 +38,7 @@ if (!fileId) {
       return res.text();
     })
     .then(html => {
+      html = sanitizeEmailHtmlForBrowser(html);
       preview.srcdoc = html;
 
       preview.onload = () => {
@@ -43,10 +67,6 @@ saveBtn.addEventListener("click", () => {
       updatedHtml = "<!DOCTYPE html>\n" + updatedHtml;
     }
 
-    const body = new URLSearchParams();
-    body.append("fileId", fileId);
-    body.append("html", updatedHtml);
-
     fetch("/api/zapier-submit", {
       method: "POST",
       headers: {
@@ -65,8 +85,6 @@ saveBtn.addEventListener("click", () => {
       console.error(err);
       alert("Error saving newsletter.");
     });
-
-    alert("Newsletter submitted successfully.");
 
   } catch (err) {
     console.error(err);
