@@ -47,10 +47,23 @@ saveBtn.addEventListener("click", () => {
     body.append("fileId", fileId);
     body.append("html", updatedHtml);
 
-    // Fire-and-forget — no preflight, no CORS error
-    fetch("https://hooks.zapier.com/hooks/catch/19867794/uaz4fae/", {
+    fetch("/api/zapier-submit", {
       method: "POST",
-      body: body
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fileId,
+        html: updatedHtml
+      })
+    })
+    .then(res => {
+      if (!res.ok) throw new Error("Submission failed");
+      alert("Newsletter submitted successfully.");
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Error saving newsletter.");
     });
 
     alert("Newsletter submitted successfully.");
