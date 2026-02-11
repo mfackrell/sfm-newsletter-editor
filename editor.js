@@ -26,6 +26,7 @@ function sanitizeEmailHtmlForBrowser(html) {
   return html;
 }
 
+
 if (!fileId) {
   alert("No fileId provided.");
 } else {
@@ -38,20 +39,13 @@ if (!fileId) {
     })
     .then(html => {
       html = sanitizeEmailHtmlForBrowser(html);
+      preview.srcdoc = html;
 
-      // attach BEFORE write so load is never missed
-      preview.contentWindow.addEventListener("load", () => {
+      preview.onload = () => {
         const doc = preview.contentDocument;
-        if (doc && doc.body) {
-          doc.body.contentEditable = true;
-          doc.body.style.cursor = "text";
-        }
-      }, { once: true });
-
-      const iframeDoc = preview.contentWindow.document;
-      iframeDoc.open();
-      iframeDoc.write(html);
-      iframeDoc.close();
+        doc.body.contentEditable = true;
+        doc.body.style.cursor = "text";
+      };
     })
     .catch(err => {
       console.error(err);
@@ -97,3 +91,4 @@ saveBtn.addEventListener("click", () => {
     alert("Error saving newsletter.");
   }
 });
+
