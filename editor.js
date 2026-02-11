@@ -39,7 +39,21 @@ if (!fileId) {
     })
     .then(html => {
       html = sanitizeEmailHtmlForBrowser(html);
-      preview.srcdoc = html;
+      .then(html => {
+    html = sanitizeEmailHtmlForBrowser(html);
+  
+    const doc = preview.contentWindow.document;
+    doc.open();
+    doc.write(html);
+    doc.close();
+  
+    preview.onload = () => {
+      const iframeDoc = preview.contentDocument;
+      iframeDoc.body.contentEditable = true;
+      iframeDoc.body.style.cursor = "text";
+    };
+  })
+
 
       preview.onload = () => {
         const doc = preview.contentDocument;
