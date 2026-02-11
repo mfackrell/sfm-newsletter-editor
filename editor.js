@@ -26,7 +26,6 @@ function sanitizeEmailHtmlForBrowser(html) {
   return html;
 }
 
-
 if (!fileId) {
   alert("No fileId provided.");
 } else {
@@ -39,27 +38,20 @@ if (!fileId) {
     })
     .then(html => {
       html = sanitizeEmailHtmlForBrowser(html);
-      .then(html => {
-    html = sanitizeEmailHtmlForBrowser(html);
-  
-    const doc = preview.contentWindow.document;
-    doc.open();
-    doc.write(html);
-    doc.close();
-  
-    preview.onload = () => {
-      const iframeDoc = preview.contentDocument;
-      iframeDoc.body.contentEditable = true;
-      iframeDoc.body.style.cursor = "text";
-    };
-  })
 
-
-      preview.onload = () => {
+      // attach BEFORE write so load is never missed
+      preview.contentWindow.addEventListener("load", () => {
         const doc = preview.contentDocument;
-        doc.body.contentEditable = true;
-        doc.body.style.cursor = "text";
-      };
+        if (doc && doc.body) {
+          doc.body.contentEditable = true;
+          doc.body.style.cursor = "text";
+        }
+      }, { once: true });
+
+      const iframeDoc = preview.contentWindow.document;
+      iframeDoc.open();
+      iframeDoc.write(html);
+      iframeDoc.close();
     })
     .catch(err => {
       console.error(err);
@@ -105,4 +97,3 @@ saveBtn.addEventListener("click", () => {
     alert("Error saving newsletter.");
   }
 });
-
