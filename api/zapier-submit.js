@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   try {
     const zapierRes = await fetch(
-      "https://hooks.zapier.com/hooks/catch/19867794/uaz4fae/",
+      "https://hooks.zapier.com/hooks/catch/19867794/uaz4d11/",
       {
         method: "POST",
         headers: {
