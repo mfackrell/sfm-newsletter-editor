@@ -15,20 +15,33 @@ main {
   padding: 16px;
 }
 
-textarea {
+#preview,
+#htmlEditor {
   width: 100%;
-  height: 70vh;
+  height: 80vh;
+  margin-bottom: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  box-sizing: border-box;
+  background: white;
+}
+
+#preview {
+  display: block;
+}
+
+#htmlEditor {
+  display: none;
   font-family: monospace;
   font-size: 13px;
   padding: 12px;
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
   resize: vertical;
 }
 
 .actions {
-  margin-top: 12px;
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
 }
 
 button {

@@ -1,31 +1,61 @@
 const preview = document.getElementById("preview");
+const htmlEditor = document.getElementById("htmlEditor");
 const saveBtn = document.getElementById("saveBtn");
+const toggleViewBtn = document.getElementById("toggleViewBtn");
+
+let isHtmlMode = false;
 
 const params = new URLSearchParams(window.location.search);
 const fileId = params.get("fileId");
 
+function enableVisualEditing() {
+  const doc = preview.contentDocument;
+
+  if (doc?.body) {
+    doc.body.contentEditable = true;
+    doc.body.style.cursor = "text";
+  }
+}
+
+preview.addEventListener("load", enableVisualEditing);
+
 function sanitizeEmailHtmlForBrowser(html) {
-  // Fix markdown-style href="[url](url)"
   html = html.replace(
     /href="\[(https?:\/\/[^\]]+)\]\([^)]+\)"/g,
     'href="$1"'
   );
 
-  // Remove empty-src images
   html = html.replace(
     /<img\b[^>]*\bsrc\s*=\s*["']\s*["'][^>]*>/gi,
-    ''
+    ""
   );
 
-  // Remove cid images (browser can't render them)
   html = html.replace(
     /<img\b[^>]*\bsrc\s*=\s*["']cid:[^"']*["'][^>]*>/gi,
-    ''
+    ""
   );
 
   return html;
 }
 
+function setEditorMode(nextIsHtmlMode) {
+  if (nextIsHtmlMode) {
+    const currentHtml = preview.contentDocument?.documentElement?.outerHTML;
+
+    if (currentHtml) {
+      htmlEditor.value = currentHtml;
+    }
+  } else {
+    preview.srcdoc = htmlEditor.value;
+  }
+
+  isHtmlMode = nextIsHtmlMode;
+  preview.style.display = isHtmlMode ? "none" : "block";
+  htmlEditor.style.display = isHtmlMode ? "block" : "none";
+  toggleViewBtn.textContent = isHtmlMode
+    ? "Switch to Visual View"
+    : "Switch to HTML View";
+}
 
 if (!fileId) {
   alert("No fileId provided.");
@@ -34,18 +64,16 @@ if (!fileId) {
 
   fetch(githubRawUrl)
     .then(res => {
-      if (!res.ok) throw new Error("Failed to load HTML");
+      if (!res.ok) {
+        throw new Error("Failed to load HTML");
+      }
+
       return res.text();
     })
     .then(html => {
-      html = sanitizeEmailHtmlForBrowser(html);
-      preview.srcdoc = html;
-
-      preview.onload = () => {
-        const doc = preview.contentDocument;
-        doc.body.contentEditable = true;
-        doc.body.style.cursor = "text";
-      };
+      const sanitizedHtml = sanitizeEmailHtmlForBrowser(html);
+      preview.srcdoc = sanitizedHtml;
+      htmlEditor.value = sanitizedHtml;
     })
     .catch(err => {
       console.error(err);
@@ -53,18 +81,26 @@ if (!fileId) {
     });
 }
 
+toggleViewBtn.addEventListener("click", () => {
+  setEditorMode(!isHtmlMode);
+});
+
 saveBtn.addEventListener("click", () => {
   try {
-    const doc = preview.contentDocument;
+    let updatedHtml = htmlEditor.value;
 
-    if (!doc || !doc.documentElement) {
-      throw new Error("Preview document not ready");
+    if (!isHtmlMode) {
+      const doc = preview.contentDocument;
+
+      if (!doc?.documentElement) {
+        throw new Error("Preview document not ready");
+      }
+
+      updatedHtml = doc.documentElement.outerHTML;
     }
 
-    let updatedHtml = doc.documentElement.outerHTML;
-
     if (!updatedHtml.toLowerCase().startsWith("<!doctype")) {
-      updatedHtml = "<!DOCTYPE html>\n" + updatedHtml;
+      updatedHtml = `<!DOCTYPE html>\n${updatedHtml}`;
     }
 
     fetch("/api/zapier-submit", {
@@ -77,18 +113,19 @@ saveBtn.addEventListener("click", () => {
         html: updatedHtml
       })
     })
-    .then(res => {
-      if (!res.ok) throw new Error("Submission failed");
-      alert("Newsletter submitted successfully.");
-    })
-    .catch(err => {
-      console.error(err);
-      alert("Error saving newsletter.");
-    });
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("Submission failed");
+        }
 
+        alert("Newsletter submitted successfully.");
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Error saving newsletter.");
+      });
   } catch (err) {
     console.error(err);
     alert("Error saving newsletter.");
   }
 });
-
