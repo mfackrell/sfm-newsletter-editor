@@ -14,13 +14,19 @@
   </header>
 
   <main>
-<iframe
-  id="preview"
-  style="width:100%; height:80vh; border:1px solid #ccc; background:white;"
-></iframe>
+    <div class="actions">
+      <button id="toggleViewBtn" type="button">Switch to HTML View</button>
+    </div>
 
-<button id="saveBtn">Save</button>
+    <iframe id="preview" title="Newsletter preview"></iframe>
 
+    <textarea
+      id="htmlEditor"
+      aria-label="HTML editor"
+      spellcheck="false"
+    ></textarea>
+
+    <button id="saveBtn" type="button">Save</button>
   </main>
 
   <script src="editor.js"></script>
