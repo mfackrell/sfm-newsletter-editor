@@ -14,6 +14,19 @@ function enableVisualEditing() {
   if (doc?.body) {
     doc.body.contentEditable = true;
     doc.body.style.cursor = "text";
+    doc.body.addEventListener("paste", e => {
+      const clipboardItems = e.clipboardData?.items ?? [];
+      const hasImage = Array.from(clipboardItems).some(item =>
+        item.type.startsWith("image/")
+      );
+
+      if (hasImage) {
+        e.preventDefault();
+        alert(
+          "Directly pasting images is disabled to prevent timeouts. Please use a hosted image URL instead."
+        );
+      }
+    });
   }
 }
 
@@ -102,6 +115,18 @@ saveBtn.addEventListener("click", () => {
     if (!updatedHtml.toLowerCase().startsWith("<!doctype")) {
       updatedHtml = `<!DOCTYPE html>\n${updatedHtml}`;
     }
+
+    if (updatedHtml.includes('src="data:image/')) {
+      alert(
+        "This newsletter contains embedded Base64 images that are too large to save. Please replace them with hosted image URLs."
+      );
+      return;
+    }
+
+    const updatedHtmlSizeKb = new Blob([updatedHtml]).size / 1024;
+    console.log(
+      `Newsletter HTML size: ${updatedHtmlSizeKb.toFixed(2)} KB`
+    );
 
     fetch("/api/zapier-submit", {
       method: "POST",
