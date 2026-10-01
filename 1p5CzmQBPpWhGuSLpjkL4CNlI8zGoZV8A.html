@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html lang="en"> <head> <meta charset="UTF-8" /> <title>Salty Farm Ministries · Hands & Feet Update</title> <meta name="viewport" content="width=device-width, initial-scale=1" /> <style> /* THEME: Salty Farm Teal & Rust on Light Background Teal: #2c7a83 Rust: #cd853f Background: #f3f4f6 Text: #1f2937 */ body { margin: 0; padding: 0; background: #f3f4f6; font-family: system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; color: #1f2937; } a { color: inherit; }
+
+.outer {
+  padding: 24px 12px;
+  background: #f3f4f6;
+}
+
+.shell {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  /* BRAND TEAL TOP BORDER ACCENT */
+  border-top: 8px solid #2c7a83;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+    /* --- LOGO SECTION --- */
+    .logo-header {
+      text-align: center;
+      padding: 24px 0 16px;
+      background: #fff;
+      border-bottom: 1px dashed #e5e7eb;
+    }
+    .logo-header img {
+      width: 140px; 
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+
+/* HERO */
+.top-hero {
+  position: relative;
+  background: #000;
+  color: #ffffff;
+}
+
+.top-hero img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  opacity: 0.9;
+}
+
+.top-hero-overlay {
+  position: absolute;
+  inset: 0;
+  /* Teal to Dark Teal Gradient overlay */
+  background: linear-gradient(to bottom, rgba(44, 122, 131, 0.3), rgba(20, 50, 54, 0.85));
+}
+
+.top-hero-content {
+  position: absolute;
+  inset: 0;
+  padding: 18px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.tagline {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fbbf24; /* Gold/Rust pop */
+  opacity: 1;
+  font-weight: 700;
+}
+
+.hero-title {
+  font-size: 30px;
+  line-height: 1.15;
+  font-weight: 800;
+  margin: 6px 0 4px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-sub {
+  font-size: 14px;
+  color: #e5e7eb;
+  max-width: 520px;
+}
+
+.scripture {
+  font-size: 11px;
+  color: #e5e7eb;
+  opacity: 0.9;
+  margin-top: 8px;
+  max-width: 420px;
+  font-style: italic;
+}
+
+.inner {
+  padding: 28px 26px 34px;
+  color: #374151;
+}
+
+.section { margin-top: 32px; }
+
+.section-title {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #cd853f; /* BRAND RUST */
+  margin-bottom: 6px;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.section-kicker {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.small {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 14px 16px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+
+.highlight-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #2c7a83; /* BRAND TEAL */
+}
+
+.highlight-text {
+  font-size: 13px;
+  color: #4b5563;
+  margin: 0;
+}
+
+.fb-link {
+  font-size: 12px;
+  color: #2c7a83;
+  text-decoration: none;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+ul { list-style: none; padding: 0; margin: 0; }
+li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #374151;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed #e5e7eb;
+}
+li:last-child { border-bottom: none; }
+
+/* STORY BLOCK - Light Teal Tint */
+.story-block {
+  background: #f0fdfa;
+  color: #1f2937;
+  border-radius: 14px;
+  padding: 18px;
+  margin-top: 10px;
+  border-left: 4px solid #2c7a83;
+}
+
+.story-intro {
+  font-size: 12px;
+  color: #cd853f; /* BRAND RUST */
+  margin-bottom: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.story-text {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.story-link {
+  color: #2c7a83;
+  font-size: 13px;
+  margin-top: 12px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px dotted #2c7a83;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+.btn:hover { opacity: 0.9; }
+
+.btn-primary {
+  background: #2c7a83; /* BRAND TEAL */
+  color: #ffffff;
+  border: 1px solid #2c7a83;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #2c7a83; /* BRAND TEAL */
+  border: 2px solid #2c7a83;
+}
+
+.divider {
+  border-top: 1px solid #e5e7eb;
+  margin: 28px 0;
+}
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+  color: #9ca3af;
+  padding: 18px 10px 0;
+}
+
+.socials {
+  margin: 10px 0;
+}
+
+.socials a {
+  margin: 0 8px;
+  text-decoration: none;
+  color: #2c7a83;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+
+/* EMAIL SAFE STACKING */
+@media only screen and (max-width:600px){
+  .stack-column,
+  .stack-column td{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+  }
+}
+
+
+</style>
+</head>
+<body>
+<div class="outer">
+<div class="shell">
+
+  <div class="logo-header">
+    <img src="https://i.imgur.com/kvjCO5c.png" alt="Salty Farm Ministries" />
+  </div>
+
+  <div class="top-hero">
+    <!-- Using a placeholder image for the hero as the variable was not provided -->
+    <img src="https://zapier-dev-files.s3.amazonaws.com/cli-platform/20727/pbRIqco__6GE4OAV5rUukXGL5fghiy_U7ipAh87-MTmCRi2kfxjwXfATWhdgdsf8n_7nm68M3wraU2pBMgc0_QAsPDruvGOPT4ioKXL62DDgbXCJYOV1AnvmbkYtP-UYuVFoUi_-CHMcGeLQtCJugLhe2KADrjKYOtFRQ-A1ejw" alt="Salty Farm Ministries" />
+    <div class="top-hero-overlay"></div>
+    <div class="top-hero-content">
+      <div class="tagline">Salty Farm Ministries · Update</div>
+      <div class="hero-title">Food for the body. Hope for the soul.</div>
+      <div class="hero-sub">A look at how Jesus has been at work among our friends this month.</div>
+      <div class="scripture">“Therefore, if anyone is in Christ, the new creation has come.”<br /><em>– 2 Corinthians 5:17</em></div>
+    </div>
+  </div>
+
+
+
+  <div class="inner">
+    <section class="section">
+      <div class="section-title">Snapshots From the Street</div>
+      <p class="section-kicker">Moments of grace from this month.</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e5e7eb;border-radius:12px;margin-top:8px;background:#ffffff;">
+        <tr class="stack-column">
+          <td style="padding:16px;">
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px;color:#2c7a83;">An ordinary serve night… and an eternal moment</div>
+            <div style="font-size:13px;color:#4b5563;line-height:1.6;">
+              <p style="margin:0 0 10px;">Wednesday night began like so many of our serve nights do...<br />Meals were shared. Showers were provided. Conversations unfolded. People gathered in community.</p>
+              <p style="margin:0 0 10px;">And then, in the middle of an ordinary night, something eternal happened.</p>
+              <p style="margin:0 0 10px;">Daniel believed in Jesus and chose to be baptized.</p>
+              <p style="margin:0 0 10px;">We may not know every chapter of Daniel’s story, but we know this moment marked the beginning of something new.</p>
+              <p style="margin:0 0 10px;">Baptism is a public declaration that says: I believe. I belong to Jesus. My old life has been buried. I am walking forward in new life.</p>
+              <p style="margin:0 0 10px;">This is why we keep showing up in the streets. We want to meet physical needs with dignity and love, but our greatest hope is that every person we encounter would come to know the hope, freedom, and new life found in Jesus.</p>
+              <p style="margin:0 0 10px;">No stage. No church building. No perfect circumstances required.</p>
+              <p style="margin:0 0 10px;">Just Jesus meeting Daniel right where he was and a community surrounding him as he said yes.</p>
+              <p style="margin:0 0 10px;">Daniel, your Salty Farm family celebrates with you. This is only the beginning.</p>
+              <p style="margin:0;">“Therefore, if anyone is in Christ, the new creation has come.” — 2 Corinthians 5:17</p>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e5e7eb;border-radius:12px;margin-top:8px;background:#ffffff;">
+        <tr class="stack-column">
+          <td style="padding:16px;">
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px;color:#2c7a83;">Love moves in every direction here</div>
+            <div style="font-size:13px;color:#4b5563;line-height:1.6;">
+              <p style="margin:0 0 10px;">The only card she received when her father passed away came from our friends on the street.</p>
+              <p style="margin:0 0 10px;">They saw that one of our volunteers was hurting. They wanted her to know she was loved, remembered, and not carrying her grief alone.</p>
+              <p style="margin:0 0 10px;">So they gave her a card.</p>
+              <p style="margin:0 0 10px;">To someone else, it may have seemed like a small gesture. To her, it meant everything.</p>
+              <p style="margin:0 0 10px;">Recently, another volunteer began transitioning through an incredibly difficult season and needed help moving. Once again, her Salty Farm family showed up...our team coming together to carry boxes, lighten the load, and remind her that she didn’t have to walk through this chapter alone.</p>
+              <p style="margin:0 0 10px;">This is what community looks like.</p>
+              <p style="margin:0 0 10px;">It isn’t divided into those who serve and those who are served. Love moves in every direction here.</p>
+              <p style="margin:0 0 10px;">Our volunteers show up for our friends.<br />Our friends show up for our volunteers.<br />And together, we carry one another through celebrations, losses, transitions, and everything in between.</p>
+              <p style="margin:0 0 10px;">Purpose isn’t always found in a title, a platform, or a program.</p>
+              <p style="margin:0 0 10px;">Sometimes it is found in noticing that someone is hurting and then...writing the card, carrying the box, showing up...reminding another person, “You matter to me.”</p>
+              <p style="margin:0 0 10px;">Somewhere along the way, we became more than people who gather to serve.</p>
+              <p style="margin:0 0 10px;">We became family. The Salty Farm Family.</p>
+              <p style="margin:0;">And this is the kind of community we believe God is calling us to keep building...one where everyone belongs, everyone contributes, and everyone has a place to both give and receive love.</p>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e5e7eb;border-radius:12px;margin-top:8px;background:#ffffff;">
+        <tr class="stack-column">
+          <td style="padding:16px;">
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px;color:#2c7a83;">One table. One shared purpose.</div>
+            <div style="font-size:13px;color:#4b5563;line-height:1.6;">
+              <p style="margin:0 0 10px;">There’s something special about a meal made by many hands.</p>
+              <p style="margin:0 0 10px;">Each week, our meals often come together potluck style...one person brings a main dish, another makes a side, someone brings dessert, another adds the sandwiches, fruit, and drinks. Different kitchens. Different recipes. Different people.</p>
+              <p style="margin:0 0 10px;">But one table.</p>
+              <p style="margin:0 0 10px;">And one shared purpose: to make sure our friends on the street are fed well and know they are deeply cared for.</p>
+              <p style="margin:0 0 10px;">We don't want to simply hand someone something to eat. We want to serve the kind of meal we would put on the table for our own family...hearty, healthy, flavorful, and made with intention.</p>
+              <p style="margin:0 0 10px;">Because food can meet a physical need, but the heart behind it can communicate so much more:</p>
+              <p style="margin:0 0 10px;">We thought about you.<br />We prepared this for you.<br />You are worth the effort.<br />There is a place for you at this table.</p>
+              <p style="margin:0 0 10px;">Every casserole stirred, vegetable chopped, dish seasoned, dessert baked, and plate served becomes part of something bigger when we bring it all together.</p>
+              <p style="margin:0 0 10px;">Maybe that's the secret ingredient in our meals....</p>
+              <p style="margin:0 0 10px;">A whole lot of people contributing what they can, all seasoned with love.</p>
+              <p style="margin:0 0 10px;">This is how community feeds community.</p>
+              <p style="margin:0;">Meet needs. Restore dignity. Bring hope. Empower purpose. Cultivate community.</p>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </section>
+
+    <section class="section">
+      <div class="section-title">A Story From This Month</div>
+      <div class="story-block">
+        <div class="story-intro">When “I’m ready” meets real-world barriers</div>
+        <div class="story-text">
+          <p style="margin:0 0 12px;">“They are going to want things I don’t have...and it will end up like it always does. I can’t get help anywhere.”</p>
+          <p style="margin:0 0 12px;">Those were his words when I started trying to help him last night. He has battled alcoholism for 34 years. And last night, he was ready to live a different life. I was determined that this time would be different.</p>
+          <p style="margin:0 0 12px;">But he was right.</p>
+          <p style="margin:0 0 12px;">He thought he had insurance, but he didn’t know his member ID number. As we started making calls and trying to figure it out, we learned his coverage had been dropped after he failed to file his taxes.</p>
+          <p style="margin:0 0 12px;">And just like that...the place we were trying to get him into couldn’t take him.</p>
+          <p style="margin:0 0 12px;">As I sat beside him making calls, asking questions, searching for another way...I watched his frustration grow.</p>
+          <p style="margin:0 0 12px;">Then the hopelessness. Then the anger. Not because he didn’t want help. Because even when he was finally ready to do the next right thing...he couldn’t figure out how to get through all the barriers standing between him and that help.</p>
+          <p style="margin:0 0 12px;">This is the real side of ministry that doesn't always make it into a post. Sometimes it doesn't work. Sometimes there isn't a beautiful ending to the story we get to share the next morning. Sometimes someone says, “I'm ready”...and despite every phone call, every connection and every effort, we still can't get them where they need to go.</p>
+          <p style="margin:0 0 12px;">And then we all leave feeling helpless.</p>
+          <p style="margin:0 0 12px;">He left still needing help...and I left knowing that all my determination wasn't enough to change that.</p>
+          <p style="margin:0 0 12px;">Those nights hurt.</p>
+          <p style="margin:0 0 12px;">But they also teach us where the gaps are. Last night showed us a gap we need to get better at navigating...so we're going to.</p>
+          <p style="margin:0 0 12px;">We are putting together a resource training night with our best resource connection, Jacob Gilbertson with Banyan Treatment Center for our SFM volunteers...helping our team better understand insurance, treatment options, eligibility and how to navigate the resources available in our community.</p>
+          <p style="margin:0 0 12px;">Because I don't want all of that knowledge living with one person. I want more of our team equipped to sit beside someone in that moment and help them find the next right door.</p>
+          <p style="margin:0 0 12px;">Resources aren't always the problem. Connection to them is.</p>
+          <p style="margin:0 0 12px;">And sometimes there are barriers between “I'm ready” and “here's your next step” that most of us never have to think about.</p>
+          <p style="margin:0 0 12px;">We can't promise that every story will end the way we desperately want it to. But we can learn. We can become better equipped. We can keep showing up.</p>
+          <p style="margin:0 0 12px;">And when someone says, “I'm ready”...we can do everything possible to make sure they don't have to navigate what comes next alone.</p>
+          <a href="https://saltyfarmministries.org/" class="story-link">Learn more about Salty Farm Ministries →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+       <div class="section-title">Upcoming Events</div>
+       <div class="card">
+          <ul>
+            <li><strong>Walk With Jesus</strong><br />October 10, 2026<br />Register or give: https://sfmwalkwithjesus.org</li>
+            <li><strong>La Tavola &amp; The Pathway Launch</strong><br />Planned for February 2027<br />Launching a food-service social enterprise and a supported employment program through Salty Farm Ministries.</li>
+          </ul>
+       </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Current Needs</div>
+      <div class="card">
+        <p class="small" style="font-weight:700; color:#2c7a83; margin-top:0;">We are currently collecting the following items for our friends in the streets:</p>
+        <ul class="small">
+          <li><strong>Socks &amp; new underwear</strong> (most urgently needed)</li>
+          <li><strong>Travel-size hygiene products</strong> (especially deodorant; most urgently needed)</li>
+          <li><strong>Razors</strong> (most urgently needed)</li>
+          <li>Backpacks &amp; bags</li>
+          <li>Flashlights</li>
+          <li>Weather &amp; seasonal essentials</li>
+          <li>Basic first-aid supplies</li>
+          <li>Shop the SFM Amazon Wishlist: https://a.co/05Iftaiu</li>
+          <li>Volunteers to serve in the streets: https://saltyfarmministries.org/volunteer</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Partners</div>
+      <div class="card">
+        <p class="small" style="font-weight:700; color:#2c7a83; margin-top:0;">We are currently collecting the following items for our friends in the streets:</p>
+        <ul class="small">
+          <li><strong>Shuckums PCB</strong> — Monthly partner supporting the ministry; also provides Walk With Jesus swag bag goodies and packages for the Cultivating Kindness Charity Auction.</li>
+          <li><strong>Banyan Treatment Center</strong> — Partnering with us to provide volunteer resource training for navigating insurance, eligibility, and treatment options.</li>
+          <li><strong>Central Christian Church - Mt. Vernon</strong> — Collaborating to develop hands-on ministry launch experiences for students.</li>
+          <li><strong>Bridging Recovery: Building Hope Together</strong> — Collaboration with resource partners to strengthen relationship-based connections so people don’t fall through the cracks.</li>
+          <li><strong>Hooters</strong> — Previously supported Salty Farm Ministries by donating food and supplies to help care for those in need.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">How You Can Pray</div>
+      <div class="card">
+        <ul>
+          <li>Pray for our friends who are finally ready to take the next step—recovery, treatment, stability—but are running into barriers they don’t know how to navigate (insurance gaps, paperwork, eligibility, and closed doors).<br /><br />Ask the Lord to make a way where there seems to be no way, and to equip our team with wisdom, the right connections, and perseverance to sit beside people in that moment—so when someone says, “I’m ready,” they don’t have to figure out the next step alone.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Join the Mission</div>
+      <div class="cta-row">
+        <a href="https://saltyfarmministries.org/donate" class="btn btn-primary">Give a Meal</a>
+        <a href="https://saltyfarmministries.org/volunteer" class="btn btn-outline">Serve With Us</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Salty Talk Podcast</div>
+      <p class="section-kicker">Catch the latest from our team.</p>
+      <a href="https://www.youtube.com/@SaltyFarmMinistries" style="text-decoration:none; display:block; text-align:center;">
+        <img src="https://i.imgur.com/9hvhH9m.png" alt="Salty Talk Podcast" style="width:220px; max-width:100%; border-radius:8px; border:1px solid #e5e7eb; display:block; margin: 0 auto;" />
+        <p class="small" style="color:#2c7a83; font-weight:700; margin-top:8px;">
+          ▶ Click here to watch on YouTube
+        </p>
+      </a>
+    </section>
+
+    <section class="section">
+      <div class="divider"></div>
+      <p class="small">Church, thank you for being the hands and feet of Christ with us. We could not do this without you.</p>
+      <p class="small" style="margin-top:8px;">With love in Christ,<br /><strong style="color:#2c7a83;">Salty Farm Ministries</strong></p>
+    </section>
+  </div>
+</div>
+
+<div class="footer">
+  <div>Salty Farm Ministries · Panama City Beach, FL</div>
+  <div class="socials">
+    <a href="https://www.facebook.com/SaltyFarmMinistries/">Facebook</a>
+    <a href="https://www.instagram.com/saltyfarmministries/">Instagram</a>
+    <a href="https://saltyfarmministries.org/">Website</a>
+  </div>
+  <a href="#">Unsubscribe</a>
+</div>
+</div> </body> </html>
