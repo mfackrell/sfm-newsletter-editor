@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html lang="en"> <head> <meta charset="UTF-8" /> <title>Salty Farm Ministries · Hands & Feet Update</title> <meta name="viewport" content="width=device-width, initial-scale=1" /> <style> /* THEME: Salty Farm Teal & Rust on Light Background Teal: #2c7a83 Rust: #cd853f Background: #f3f4f6 Text: #1f2937 */ body { margin: 0; padding: 0; background: #f3f4f6; font-family: system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; color: #1f2937; } a { color: inherit; }
+
+.outer {
+  padding: 24px 12px;
+  background: #f3f4f6;
+}
+
+.shell {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  /* BRAND TEAL TOP BORDER ACCENT */
+  border-top: 8px solid #2c7a83;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+    /* --- LOGO SECTION --- */
+    .logo-header {
+      text-align: center;
+      padding: 24px 0 16px;
+      background: #fff;
+      border-bottom: 1px dashed #e5e7eb;
+    }
+    .logo-header img {
+      width: 140px; 
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+
+/* HERO */
+.top-hero {
+  position: relative;
+  background: #000;
+  color: #ffffff;
+}
+
+.top-hero img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  opacity: 0.9;
+}
+
+.top-hero-overlay {
+  position: absolute;
+  inset: 0;
+  /* Teal to Dark Teal Gradient overlay */
+  background: linear-gradient(to bottom, rgba(44, 122, 131, 0.3), rgba(20, 50, 54, 0.85));
+}
+
+.top-hero-content {
+  position: absolute;
+  inset: 0;
+  padding: 18px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.tagline {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fbbf24; /* Gold/Rust pop */
+  opacity: 1;
+  font-weight: 700;
+}
+
+.hero-title {
+  font-size: 30px;
+  line-height: 1.15;
+  font-weight: 800;
+  margin: 6px 0 4px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-sub {
+  font-size: 14px;
+  color: #e5e7eb;
+  max-width: 520px;
+}
+
+.scripture {
+  font-size: 11px;
+  color: #e5e7eb;
+  opacity: 0.9;
+  margin-top: 8px;
+  max-width: 420px;
+  font-style: italic;
+}
+
+.inner {
+  padding: 28px 26px 34px;
+  color: #374151;
+}
+
+.section { margin-top: 32px; }
+
+.section-title {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #cd853f; /* BRAND RUST */
+  margin-bottom: 6px;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.section-kicker {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.small {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 14px 16px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+
+.highlight-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #2c7a83; /* BRAND TEAL */
+}
+
+.highlight-text {
+  font-size: 13px;
+  color: #4b5563;
+  margin: 0;
+}
+
+.fb-link {
+  font-size: 12px;
+  color: #2c7a83;
+  text-decoration: none;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+ul { list-style: none; padding: 0; margin: 0; }
+li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #374151;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed #e5e7eb;
+}
+li:last-child { border-bottom: none; }
+
+/* STORY BLOCK - Light Teal Tint */
+.story-block {
+  background: #f0fdfa;
+  color: #1f2937;
+  border-radius: 14px;
+  padding: 18px;
+  margin-top: 10px;
+  border-left: 4px solid #2c7a83;
+}
+
+.story-intro {
+  font-size: 12px;
+  color: #cd853f; /* BRAND RUST */
+  margin-bottom: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.story-text {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.story-link {
+  color: #2c7a83;
+  font-size: 13px;
+  margin-top: 12px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px dotted #2c7a83;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+.btn:hover { opacity: 0.9; }
+
+.btn-primary {
+  background: #2c7a83; /* BRAND TEAL */
+  color: #ffffff;
+  border: 1px solid #2c7a83;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #2c7a83; /* BRAND TEAL */
+  border: 2px solid #2c7a83;
+}
+
+.divider {
+  border-top: 1px solid #e5e7eb;
+  margin: 28px 0;
+}
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+  color: #9ca3af;
+  padding: 18px 10px 0;
+}
+
+.socials {
+  margin: 10px 0;
+}
+
+.socials a {
+  margin: 0 8px;
+  text-decoration: none;
+  color: #2c7a83;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+
+/* EMAIL SAFE STACKING */
+@media only screen and (max-width:600px){
+  .stack-column,
+  .stack-column td{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+  }
+}
+
+
+</style>
+</head>
+<body>
+<div class="outer">
+<div class="shell">
+
+  <div class="logo-header">
+    <img src="https://i.imgur.com/kvjCO5c.png" alt="Salty Farm Ministries" />
+  </div>
+
+  <div class="top-hero">
+    <!-- Using a placeholder image for the hero as the variable was not provided -->
+    <img src="https://zapier-dev-files.s3.amazonaws.com/cli-platform/20758/otmS-KG8j00aK6CvUoHMURg8ndxdxg6Z3chwXEvZI-U-ZbnVjKAOYm9KDRoWtYxDnXrBa0_cm1asEFdPM-cfBeusxhC0RcCyX1liaoUoHoKfJ0LBxePM8SVi4A3OwO6WejLNd6_f13I7Lo6W3hAqbkPRTqMC0CS2gfOetnE5B-k" alt="Salty Farm Ministries" />
+    <div class="top-hero-overlay"></div>
+    <div class="top-hero-content">
+      <div class="tagline">Salty Farm Ministries · Update</div>
+      <div class="hero-title">Food for the body. Hope for the soul.</div>
+      <div class="hero-sub">A look at how Jesus has been at work among our friends this month.</div>
+      <div class="scripture">“And the King will answer them, ‘Truly, I say to you, as you did it to one of the least of these my brothers, you did it to me.’”<br /><em>– Matthew 25:40</em></div>
+    </div>
+  </div>
+
+
+
+  <div class="inner">
+    <section class="section">
+      <div class="section-title">Snapshots From the Street</div>
+      <p class="section-kicker">Moments of grace from this month.</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;border:1px solid #e5e7eb;margin-top:8px;">
+        <tr class="stack-column">
+          <td width="160" style="padding:14px 0 14px 14px;vertical-align:top;">
+            <img src="https://scontent-lga3-3.xx.fbcdn.net/v/t39.99422-6/862273345_1702529444775121_7100937074472253624_n.png?stp=dst-jpg_tt6&cstp=mx1082x1352&ctp=s640x640&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=YznP7Yed1TUQ7kNvwFNTgQ8&_nc_oc=Adr3wdK7LnJVIsfqOfLReThp4IEiKV19h6dmInD4JNJpagRiREIOsi6_ylXc92bvqQlK3CzgKmZs4ybvgtQS3x0c&_nc_zt=14&_nc_ht=scontent-lga3-3.xx&_nc_gid=y1Bjqy3aDx_xUgn7TQDoXQ&_nc_ss=70180&oh=00_AQQFRqwNghwEkqCXfjF0ckdlg2yXfT21PsPEm_1CuhorfQ&oe=6AED5BB5" width="160" style="width:160px;max-width:100%;height:auto;display:block;border-radius:10px;border:1px solid #e5e7eb;" alt="A beautiful step forward" />
+          </td>
+          <td style="padding:14px 16px 14px 12px;vertical-align:top;">
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px;color:#2c7a83;">A beautiful step forward</div>
+            <div style="font-size:13px;color:#4b5563;line-height:1.6;">
+              Sometimes the biggest steps forward begin with simply saying YES. ❤️<br /><br />
+              For a while now, one of our friends on the street has been talking about wanting to enter a program...wanting something different for his life...knowing that change was needed, but not quite ready to take that step.<br /><br />
+              Today was the day.<br /><br />
+              Today, he climbed into the truck with our incredible team and headed to CHROME to begin a new chapter.<br /><br />
+              And while getting into that truck might seem like such a simple thing to some...we know just how BIG that step really was.<br /><br />
+              Because wanting a different life and being willing to surrender to the changes necessary to live it are two very different things.<br /><br />
+              We know the road ahead won't always be easy. There will be challenges, hard days, and moments when surrender will have to become a daily choice. But we also know that God has been working in his heart long before today.<br /><br />
+              This is why we keep showing up. Why we build relationships. Why we walk alongside our friends even when they're not quite ready to take that next step.<br /><br />
+              Because when the day comes that they ARE ready...we want to be right there to walk with them.<br /><br />
+              We're incredibly thankful for our team who made sure he didn't have to take this step alone and for our ministry partners at Chrome Retreat who are there to receive him.<br /><br />
+              Would you join us in praying for our friend? For strength, courage, healing, and a heart that continues to surrender to all God has waiting for him.<br /><br />
+              Today wasn't the finish line...but what a beautiful step forward. ❤️
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;border:1px solid #e5e7eb;margin-top:8px;">
+        <tr class="stack-column">
+          <td width="160" style="padding:14px 0 14px 14px;vertical-align:top;">
+            <img src="https://scontent-phl2-1.xx.fbcdn.net/v/t39.99422-6/840642923_2522929531512279_11881570151522671_n.png?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s720x720&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=0xhVS08pxWsQ7kNvwE1wcDj&_nc_oc=AdqhL6SMwtM-MeTHwV_W8qFPSCKlMA2hERdIya1ah_IdNKf4PzHjo6X_5Xb9wQdRebI&_nc_zt=14&_nc_ht=scontent-phl2-1.xx&_nc_gid=tyigTGoh3Ra9XiU5DottIQ&_nc_ss=70180&oh=00_AQSDF_vDvZqEkQfnory1VBGdSR_q_M3SCDrHO2GBDk-6BQ&oe=6AED64B6" width="160" style="width:160px;max-width:100%;height:auto;display:block;border-radius:10px;border:1px solid #e5e7eb;" alt="Rose evacuated" />
+          </td>
+          <td style="padding:14px 16px 14px 12px;vertical-align:top;">
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px;color:#2c7a83;">Rose evacuated</div>
+            <div style="font-size:13px;color:#4b5563;line-height:1.6;">
+              Today, Rose evacuated!<br /><br />
+              But not because of a storm brewing in the Gulf, but because of the storm that had become her life. She's ready for something different...she's ready for a new thing!<br /><br />
+              So, please join our Salty Farm family in covering Rose with our prayers as she steps into all God has for her!<br /><br />
+              We are so grateful for programs like Stillwater Ministries who has taken two women off the streets! Special shout out to our Wednesday night 516 Project Ministry crew for saying YES and being the hands and feet with us! Yall are vessels for God to keep snatching em off the streets and guiding them into the Kingdom! 🙌
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;border:1px solid #e5e7eb;margin-top:8px;">
+        <tr class="stack-column">
+          <td style="padding:16px;vertical-align:top;">
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px;color:#2c7a83;">God calmed the storm</div>
+            <div style="font-size:13px;color:#4b5563;line-height:1.6;">
+              Hey Salty Farm fam...just wanted to give a quick update!<br /><br />
+              In case you missed our hurricane prep post...we headed north with the shower trailer and our home...you know since they tend to roll in super high winds. We also got the La Tavola food truck more north.<br /><br />
+              We didn't exactly get out of the path but got a little more north. Not gonna lie, there was a moment when we were like...OK, here we go! It got more shaky than I was comfortable sitting in. We checked radar and it looked like there was two more hours of red to sit through!<br /><br />
+              But JL Dunahee led us well...we started praising, praying, declaring scriptures, and anointing the house.<br /><br />
+              And then...GOD CALMED THE STORM! Immediately the winds calmed and the shaking stopped! We checked radar again and we were sitting in the red with nothing happening! And we only had a little bit longer in it...the storm dissipated at HIS NAME! 🙌<br /><br />
+              I have sent out the call to our teams and it seems the consensus is - many without power, lots of limbs down, so roads are blocked, some clean up to do...but all in all everyone is good! 🙌<br /><br />
+              Our friends are a little harder to check on!!!! Once we get the clear that we can drive on the roads and make our way down there...without interfering with clean up and power restoration...we are heading out to check on them. And I know several others on our team are doing the same! Please pray for our friends...<br />
+              I can't imagine riding this out with zero shelter except a tent if you're lucky.<br /><br />
+              God has been so incredible at giving us the forged family we have down here! Its incredible to see everyone love one another, support one another, and pray for one another. In times like this, those are the people you want by your side. And we couldn't have been given any better to do life with ❤️. The amount of outpouring towards us, our team, and our friends from all over the U.S. has been incredible! These are the moments that stay with you forever!
+            </div>
+          </td>
+        </tr>
+      </table>
+    </section>
+
+    <section class="section">
+      <div class="section-title">A Story From This Month</div>
+      <div class="story-block">
+        <div class="story-intro">After the storm passed, our volunteers checked on friends by name—calling, messaging, and bringing pizzas—because relationships make their wellbeing personal.</div>
+        <div class="story-text">
+          We may not know how to pronounce the storm's name...but we sure know the names of the people we were praying for. ❤️<br /><br />
+          Before the storm rolled through our community, we prayed over our friends living on the streets...asking God to place His hand of protection over each of them.<br /><br />
+          And when the storm passed...our first thoughts were of them.<br /><br />
+          Were they safe? Did they find shelter? Had everyone made it through okay?<br /><br />
+          So our volunteers did what family does...<br /><br />
+          They made phone calls. Sent messages. Checked on the friends they could reach. And showed up at the park with pizzas...not because it was a scheduled serve night...but because they needed to put eyes on the people they love and know they were okay.<br /><br />
+          Because when you build relationships with people...their well-being becomes personal.<br /><br />
+          They're not just people we serve a few days a week.<br /><br />
+          They're friends whose names we know...whose stories we've become part of...whose absence we notice...and whose lives matter deeply to us.<br /><br />
+          And this week, as we return to our regular outreach, we get to do what this picture captures so beautifully...wrap our arms around our friends, hug their necks, look them in the eyes, and thank God for bringing them safely through the storm.<br /><br />
+          This is what we mean when we say Salty Farm Ministries isn't simply a ministry that provides services.<br /><br />
+          It's a community built on relationships.<br /><br />
+          A ministry born from a million YESes...that continues to live out that yes long after the serving tables are packed away.<br /><br />
+          Because loving like Jesus isn't something we schedule.<br /><br />
+          It's a 24/7 posture of obedience...and it's how we're called to live. ❤️<br /><br />
+          <a href="https://saltyfarmministries.org/" class="story-link">Learn more about Salty Farm Ministries →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Volunteer Spotlight</div>
+      <div class="card">
+        <p class="small">Sometimes the most beautiful transformations happen where nobody sees them...a little peak behind the doors❤️<br /><br />
+Behind every meal served, every shower provided, and every piece of clothing handed to a friend in the streets...there's a whole lot of work happening behind the scenes.<br /><br />
+And sometimes, that work can feel downright overwhelming!!<br /><br />
+Our warehouse has been one of those places. With donations constantly coming in and supplies going out to meet needs in the streets, keeping everything organized and accessible has been a mountain we've struggled to climb. We have HUNDREDS of totes that store donations for all of our ministry outreaches but didn't have any easy way to access them...making collecting, sorting, organizing, and distributing items daunting for our donation coordinator, Nichole.<br /><br />
+But then...some pretty incredible people stepped in and did what we couldn't accomplish on our own.<br /><br />
+An Eagle Scout from Troop #317 took on the enormous task of transforming our warehouse storage as his Eagle Scout project. He organized a team, raised the funds for materials, and led the building of an entire shelving system to help us better manage the donations entrusted to our ministry.<br /><br />
+And then our Central Christian Church mission team rolled up their sleeves and tackled the next mountain...sorting through EVERY piece of clothing and organizing it all so we could finally see exactly what we have, what we need, and how to get it into the hands of our friends more efficiently.<br /><br />
+Y'ALL...THE TRANSFORMATION!!<br /><br />
+What once felt like an impossible task became something beautiful because people were willing to give their time, talents, resources, and hearts.<br /><br />
+And here's what we love most about this...<br /><br />
+These aren't just shelves. And these aren't just organized clothes.<br /><br />
+They're clean clothes after a shower. A fresh pair of socks. A warm jacket when the temperatures drop. They're the ability to meet a need with dignity, without digging through mountains of donations to find the right size.<br /><br />
+They're a reminder that every gift and every act of service matters...even the ones that happen far away from the streets.<br /><br />
+To our Eagle Scout from Troop #317, his incredible team, and everyone who supported his project...THANK YOU for seeing a need and stepping up to meet it!<br /><br />
+To our Central Christian Church - Mt. Vernon family...THANK YOU for taking on a task that seemed never-ending and serving with such willing hearts!<br /><br />
+Together, you took something that felt impossible and made it possible for us to love and serve our friends even better.<br /><br />
+To our Donation Coordinator, Nichole Rambaran, and the entire SFM team that helps with donations...THANK YOU for your continuous work to ensure our friends' needs are met!<br /><br />
+Because when we each bring what God has placed in our hands...it's amazing what He can accomplish through us. ❤️</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Partners</div>
+      <div class="card">
+        <p class="small" style="font-weight:700; color:#2c7a83; margin-top:0;">We’re grateful for the partners and supporters who help make this work possible:</p>
+        <ul class="small">
+          <li><strong>Central Christian Church</strong>: Partnering to meet practical needs and restore dignity to those experiencing homelessness in Panama City Beach.</li>
+          <li><strong>Chrome Retreat</strong>: Providing programs and support for individuals ready to take significant steps toward recovery and a changed life.</li>
+          <li><strong>Stillwater Ministries</strong>: Helping women transition off the streets and into support and stability.</li>
+          <li><strong>Local businesses and artisans</strong>: Donating items and support to help sustain the ministry’s outreach and financial needs.</li>
+          <li><strong>Banyan Treatment Centers and Mattress Firm</strong>: Sponsoring events and helping raise awareness and support for outreach efforts.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">How You Can Pray</div>
+      <div class="card">
+        <ul><li>Pray for our friends experiencing homelessness—especially those who faced the storm with little to no shelter—that God would protect them, provide safe refuge, and restore what was lost. Pray, too, for those taking brave steps into programs and new chapters, for strength, healing, courage, and a heart that keeps surrendering day by day to what God has for them.</li></ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Join the Mission</div>
+      <div class="cta-row">
+        <a href="https://saltyfarmministries.org/donate" class="btn btn-primary">Give a Meal</a>
+        <a href="https://saltyfarmministries.org/volunteer" class="btn btn-outline">Serve With Us</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Salty Talk Podcast</div>
+      <p class="section-kicker">Catch the latest from our team.</p>
+      <a href="https://www.youtube.com/@SaltyFarmMinistries" style="text-decoration:none; display:block; text-align:center;">
+        <img src="https://i.imgur.com/9hvhH9m.png" alt="Salty Talk Podcast" style="width:220px; max-width:100%; border-radius:8px; border:1px solid #e5e7eb; display:block; margin: 0 auto;" />
+        <p class="small" style="color:#2c7a83; font-weight:700; margin-top:8px;">
+          ▶ Click here to watch on YouTube
+        </p>
+      </a>
+    </section>
+
+    <section class="section">
+      <div class="divider"></div>
+      <p class="small">Church, thank you for being the hands and feet of Christ with us. We could not do this without you.</p>
+      <p class="small" style="margin-top:8px;">With love in Christ,<br /><strong style="color:#2c7a83;">Salty Farm Ministries</strong></p>
+    </section>
+  </div>
+</div>
+
+<div class="footer">
+  <div>Salty Farm Ministries · Panama City Beach, FL</div>
+  <div class="socials">
+    <a href="https://www.facebook.com/SaltyFarmMinistries/">Facebook</a>
+    <a href="https://www.instagram.com/saltyfarmministries/">Instagram</a>
+    <a href="https://saltyfarmministries.org/">Website</a>
+  </div>
+  <a href="#">Unsubscribe</a>
+</div>
+</div> </body> </html>
